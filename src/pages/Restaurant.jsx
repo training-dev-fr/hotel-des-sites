@@ -43,13 +43,16 @@ const menus = [
 ]
 
 export default function Restaurant() {
+  const imagePath = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`
+  const marketingPath = (fileName) => `${import.meta.env.BASE_URL}marketing/${fileName}`
+
   return (
     <>
       {/* HERO */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/restaurant.jpg"
+            src={imagePath('restaurant.jpg')}
             alt="Restaurant de l'Hotel des Sites"
             className="w-full h-full object-cover"
           />
@@ -85,19 +88,19 @@ export default function Restaurant() {
             </div>
             <div className="grid grid-cols-2 gap-4">
               <img
-                src="/images/plat-1.jpg"
-                alt="Plat gastronomique"
-                className="w-full aspect-square object-cover col-span-2"
+                src={marketingPath('cuisine-salade-chevre-chaud.png')}
+                alt="Salade au chevre chaud et noix"
+                className="w-full object-cover col-span-2"
               />
               <img
-                src="/images/plat-2.jpg"
-                alt="Dessert maison"
-                className="w-full aspect-[3/4] object-cover"
+                src={marketingPath('cuisine-creme-brulee.png')}
+                alt="Creme brulee maison"
+                className="w-full object-cover"
               />
               <img
-                src="/images/restaurant.jpg"
-                alt="Ambiance du restaurant"
-                className="w-full aspect-[3/4] object-cover"
+                src={marketingPath('cuisine-mijote-ardechois.png')}
+                alt="Plat mijote du terroir"
+                className="w-full object-cover"
               />
             </div>
           </div>

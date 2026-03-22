@@ -24,15 +24,45 @@ const features = [
   },
 ]
 
+const tourismHighlights = [
+  {
+    image: 'tourisme-gorges-ardeche.jpg',
+    alt: "Vue panoramique sur les Gorges de l'Ardeche",
+    title: "Les Gorges de l'Ardeche",
+    description: "A quelques minutes de l'hotel, profitez de panoramas spectaculaires, de routes mythiques et de belvederes au-dessus de la riviere.",
+  },
+  {
+    image: 'tourisme-village-riviere.jpg',
+    alt: 'Village en bord de riviere en Ardeche',
+    title: 'Villages de caractere',
+    description: "Baladez-vous dans les villages de pierre, entre ruelles anciennes, terrasses ombragees et berges paisibles.",
+  },
+  {
+    image: 'tourisme-viaduc-riviere.jpg',
+    alt: 'Viaduc au-dessus de la riviere',
+    title: 'Patrimoine & paysages',
+    description: "Entre ponts, rivieres et reliefs calcaires, la region offre des haltes photo tres fortes tout au long du sejour.",
+  },
+  {
+    image: 'tourisme-chevres-rochers.jpg',
+    alt: 'Chevres sur des rochers',
+    title: 'Nature vivante',
+    description: "Randonnees, faune locale et grands espaces composent un decor ideal pour un sejour tourne vers la nature.",
+  },
+]
+
 export default function Accueil() {
+  const imagePath = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`
+  const marketingPath = (fileName) => `${import.meta.env.BASE_URL}marketing/${fileName}`
+
   return (
     <>
       {/* HERO */}
       <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/hero-hotel.jpg"
-            alt="Hotel des Sites - Vue exterieure"
+            src={marketingPath('Hotel.png')}
+            alt="Hotel des Sites - Facade"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-noir/70 via-noir/40 to-noir" />
@@ -102,9 +132,9 @@ export default function Accueil() {
             <div className="relative">
               <div className="absolute -top-4 -left-4 w-full h-full border border-or/20" />
               <img
-                src="/images/terrasse.jpg"
-                alt="Terrasse panoramique de l'hotel"
-                className="relative w-full aspect-[4/5] object-cover"
+                src={marketingPath('terrasse-privative-soleil.png')}
+                alt="Terrasse privative de l'hotel"
+                className="relative w-full object-cover"
               />
             </div>
           </div>
@@ -139,6 +169,53 @@ export default function Accueil() {
         </div>
       </section>
 
+      {/* TOURISM */}
+      <section className="py-28 lg:py-36 bg-noir-light">
+        <div className="site-shell">
+          <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-8 mb-16">
+            <div className="max-w-2xl">
+              <span className="text-or text-xs tracking-[0.4em] uppercase block mb-4">
+                Autour de Salavas
+              </span>
+              <h2 className="font-serif text-3xl md:text-4xl text-creme mb-6 text-balance">
+                {"Des visites et activites a deux pas de l'hotel"}
+              </h2>
+              <p className="text-creme/60 leading-relaxed">
+                {"Sejourner ici, c'est aussi profiter des paysages ardechois, des villages de caractere et des sorties nature accessibles tres rapidement depuis Salavas."}
+              </p>
+            </div>
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 text-or text-sm tracking-[0.15em] uppercase group"
+            >
+              <span className="group-hover:translate-x-1 transition-transform">Organiser votre sejour</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+            {tourismHighlights.map((item) => (
+              <article
+                key={item.title}
+                className="group border border-gris-border bg-noir-card overflow-hidden"
+              >
+                <div className="overflow-hidden">
+                  <img
+                    src={imagePath(item.image)}
+                    alt={item.alt}
+                    className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
+                  />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-serif text-2xl text-creme mb-3">{item.title}</h3>
+                  <p className="text-creme/55 text-sm leading-relaxed">{item.description}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ROOMS PREVIEW */}
       <section className="py-28 lg:py-36">
         <div className="site-shell">
@@ -161,9 +238,9 @@ export default function Accueil() {
           </div>
           <div className="grid md:grid-cols-3 gap-6">
             {[
-              { img: '/images/chambre-1.jpg', title: 'Chambre Double', price: 'Des 75' },
-              { img: '/images/chambre-2.jpg', title: 'Chambre Terrasse', price: 'Des 90' },
-              { img: '/images/chambre-3.jpg', title: 'Chambre Familiale', price: 'Des 110' },
+              { img: marketingPath('chambre.png'), title: 'Chambre Double', price: 'Des 75' },
+              { img: marketingPath('chambre.png'), title: 'Chambre Terrasse', price: 'Des 90' },
+              { img: marketingPath('chambre.png'), title: 'Chambre Familiale', price: 'Des 110' },
             ].map((room, i) => (
               <Link to="/chambres" key={i} className="group cursor-pointer text-center">
                 <div className="overflow-hidden mb-4">
@@ -187,8 +264,8 @@ export default function Accueil() {
       <section className="relative py-32 lg:py-40 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/restaurant.jpg"
-            alt="Restaurant de l'Hotel des Sites"
+            src={marketingPath('cuisine-mijote-ardechois.png')}
+            alt="Cuisine regionale de l'Hotel des Sites"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-noir/80" />

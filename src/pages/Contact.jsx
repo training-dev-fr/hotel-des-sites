@@ -1,14 +1,16 @@
 import { MapPin, Phone, Mail, Clock, Navigation, CreditCard, PawPrint, Wifi, Accessibility } from 'lucide-react'
 
 export default function Contact() {
+  const imagePath = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`
+
   return (
     <>
       {/* HERO */}
       <section className="relative h-[50vh] min-h-[400px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/terrasse.jpg"
-            alt="Vue de Salavas"
+            src={imagePath('tourisme-village-riviere.jpg')}
+            alt="Vue des environs de Salavas"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/60 to-noir/20" />
@@ -213,7 +215,7 @@ export default function Contact() {
           <iframe
             title="Carte - Hotel des Sites, Salavas"
             src="https://www.google.com/maps?q=Hotel+des+Sites+Salavas&output=embed"
-            className="absolute inset-0 w-full h-full [filter:grayscale(0.2)_invert(0.1)_contrast(0.95)_brightness(0.92)_saturate(0.95)]"
+            className="absolute inset-0 w-full h-full"
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
           />

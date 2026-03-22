@@ -11,17 +11,20 @@ const services = [
 ]
 
 export default function Hotel() {
+  const imagePath = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`
+  const marketingPath = (fileName) => `${import.meta.env.BASE_URL}marketing/${fileName}`
+
   return (
     <>
       {/* HERO */}
       <section className="relative h-[70vh] min-h-[500px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/hero-hotel.jpg"
+            src={marketingPath('Hotel.png')}
             alt="Hotel des Sites - Facade"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-noir via-noir/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-noir/70 via-noir/40 to-noir" />
         </div>
         <div className="relative z-10 site-shell pb-16 w-full">
           <span className="text-or text-xs tracking-[0.4em] uppercase block mb-4">
@@ -39,8 +42,8 @@ export default function Hotel() {
           <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="/images/terrasse.jpg"
-                alt="Vue panoramique depuis la terrasse"
+                src={marketingPath('terrasse-privative-soleil.png')}
+                alt="Terrasse privative de l'hotel"
                 className="w-full aspect-[4/5] object-cover"
               />
             </div>
@@ -120,9 +123,9 @@ export default function Hotel() {
             <div className="relative">
               <div className="absolute -bottom-4 -right-4 w-full h-full border border-or/20" />
               <img
-                src="/images/plat-2.jpg"
-                alt="Petit-dejeuner"
-                className="relative w-full aspect-square object-cover"
+                src={marketingPath('petit-dej.png')}
+                alt="Petit-dejeuner servi a l'hotel"
+                className="relative w-full object-cover"
               />
             </div>
           </div>

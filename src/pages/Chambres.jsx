@@ -5,7 +5,7 @@ const rooms = [
   {
     title: 'Chambre Double',
     desc: 'Chambre intime pour 2 personnes avec decoration provencale, salle d\'eau privative et Wi-Fi gratuit.',
-    img: '/images/chambre-1.jpg',
+    img: 'chambre.png',
     capacity: '2 personnes',
     size: '18 m²',
     price: '75',
@@ -14,7 +14,7 @@ const rooms = [
   {
     title: 'Chambre Terrasse',
     desc: 'Profitez d\'une terrasse privee avec vue sur le village. Ideale pour se detendre sous le soleil ardechois.',
-    img: '/images/chambre-2.jpg',
+    img: 'chambre.png',
     capacity: '2 personnes',
     size: '22 m²',
     price: '90',
@@ -23,7 +23,7 @@ const rooms = [
   {
     title: 'Chambre Triple',
     desc: 'Chambre spacieuse pour 3 personnes, parfaite pour un sejour entre amis ou en famille.',
-    img: '/images/chambre-3.jpg',
+    img: 'chambre.png',
     capacity: '3 personnes',
     size: '24 m²',
     price: '95',
@@ -32,7 +32,7 @@ const rooms = [
   {
     title: 'Chambre Familiale',
     desc: 'Notre chambre la plus spacieuse, pour 4 personnes. Tout le confort pour un sejour en famille.',
-    img: '/images/chambre-1.jpg',
+    img: 'chambre.png',
     capacity: '4 personnes',
     size: '28 m²',
     price: '110',
@@ -41,13 +41,16 @@ const rooms = [
 ]
 
 export default function Chambres() {
+  const imagePath = (fileName) => `${import.meta.env.BASE_URL}images/${fileName}`
+  const marketingPath = (fileName) => `${import.meta.env.BASE_URL}marketing/${fileName}`
+
   return (
     <>
       {/* HERO */}
       <section className="relative h-[60vh] min-h-[450px] flex items-end overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/images/chambre-2.jpg"
+            src={marketingPath('chambre.png')}
             alt="Chambre de l'Hotel des Sites"
             className="w-full h-full object-cover"
           />
@@ -86,7 +89,7 @@ export default function Chambres() {
                 {/* Image */}
                 <div className="overflow-hidden">
                   <img
-                    src={room.img}
+                    src={marketingPath(room.img)}
                     alt={room.title}
                     className="w-full aspect-[4/3] object-cover hover:scale-105 transition-transform duration-700"
                   />
